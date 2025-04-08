@@ -1,243 +1,256 @@
 {
-  "$anchor": "spoor-config",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
-  "$patch": {
-    "source": {
-      "$ref": "config"
-    },
-    "with": {
-      "properties": {
-        "_spoor": {
-          "type": "object",
-          "title": "Spoor (SCORM)",
-          "default": {},
-          "properties": {
-            "_isEnabled": {
-              "type": "boolean",
-              "title": "Enable SCORM support",
-              "description": "If enabled, the plugin will try to find and track to a SCORM conformant LMS. Uncheck to switch off SCORM tracking",
-              "default": true
-            },
-            "_tracking": {
-              "type": "object",
-              "title": "Tracking",
-              "default": {},
-              "properties": {
-                "_shouldStoreResponses": {
-                  "type": "boolean",
-                  "title": "Store question state",
-                  "description": "If enabled, the user's responses to questions will be saved and restored in each session. Note: this setting should be enabled in the majority of cases",
-                  "default": true
-                },
-                "_shouldStoreAttempts": {
-                  "type": "boolean",
-                  "title": "Store question attempt states",
-                  "description": "If enabled, a history of the user's responses to questions will be saved and restored in each session. Note: this setting should be disabled in the majority of cases",
-                  "default": false
-                },
-                "_shouldRecordInteractions": {
-                  "type": "boolean",
-                  "title": "Record interactions",
-                  "description": "If enabled, the course will record the user's responses to questions to the cmi.interactions SCORM data fields",
-                  "default": true
-                },
-                "_shouldRecordObjectives": {
-                  "type": "boolean",
-                  "title": "Record objectives",
-                  "description": "If enabled, the course will be able to record the status and scores of the course objectives to the cmi.objectives SCORM data fields",
-                  "default": true
-                }
-              }
-            },
-            "_reporting": {
-              "type": "object",
-              "title": "Reporting",
-              "default": {},
-              "properties": {
-                "_onTrackingCriteriaMet": {
-                  "type": "string",
-                  "title": "Tracking success status",
-                  "description": "What status to report back to the LMS when the tracking criteria are met",
-                  "default": "completed",
-                  "enum": [
-                    "completed",
-                    "passed",
-                    "failed",
-                    "incomplete"
-                  ],
-                  "_backboneForms": "Select"
-                },
-                "_onAssessmentFailure": {
-                  "type": "string",
-                  "title": "Assessment failure status",
-                  "description": "What status to report back to the LMS when the assessment is failed",
-                  "default": "incomplete",
-                  "enum": [
-                    "completed",
-                    "failed",
-                    "incomplete"
-                  ],
-                  "_backboneForms": "Select"
-                },
-                "_resetStatusOnLanguageChange": {
-                  "type": "boolean",
-                  "title": "Reset status on language change",
-                  "description": "If enabled, the the course status will be reset to 'incomplete' when the user changes the course language",
-                  "default": false
-                }
-              }
-            },
-            "_advancedSettings": {
-              "type": "object",
-              "title": "Advanced settings",
-              "default": {},
-              "required": [
-                "_manifestIdentifier"
-              ],
-              "properties": {
-                "_scormVersion": {
-                  "type": "string",
-                  "title": "SCORM version",
-                  "description": "The SCORM standard to use - SCORM 1.2 or SCORM 2004 4th Edition",
-                  "default": "1.2",
-                  "enum": ["1.2", "2004"],
-                  "_backboneForms": "Select"
-                },
-                "_showDebugWindow": {
-                  "type": "boolean",
-                  "title": "Enable SCORM debug window",
-                  "description": "If enabled, a popup window will be shown on course launch that gives detailed information about what SCORM calls are being made. This can be very useful for debugging SCORM issues. Note that this popup window will appear automatically if the SCORM code encounters an error, even if this is set to false",
-                  "default": false
-                },
-                "_commitOnStatusChange": {
-                  "type": "boolean",
-                  "title": "Commit data on status change",
-                  "description": "If enabled, a 'commit' call will be made any time the lesson_status is changed",
-                  "default": true
-                },
-                "_commitOnAnyChange": {
-                  "type": "boolean",
-                  "title": "Commit data on any change",
-                  "description": "If enabled, a 'commit' (save all data) call will be made any time a value is changed. Note that enabling this setting may have a detrimental impact on the server and should only be used if absolutely necessary and only after careful load testing. Consider trying a lower value for 'Frequency of automatic commits' before changing this setting",
-                  "default": false
-                },
-                "_timedCommitFrequency": {
-                  "type": "number",
-                  "title": "Frequency of automatic commits",
-                  "description": "The frequency (in minutes) at which a 'commit' call should be made automatically. Set to 0 to disable automatic commits altogether",
-                  "default": 10
-                },
-                "_maxCommitRetries": {
-                  "type": "number",
-                  "title": "Maximum number of commit retries",
-                  "description": "If a 'commit' call fails, this setting controls how many times it should be retried before giving up and throwing an error",
-                  "default": 5
-                },
-                "_commitRetryDelay": {
-                  "type": "number",
-                  "title": "Commit retry delay",
-                  "description": "How much of a delay (in milliseconds) to leave between commit retries",
-                  "default": 2000
-                },
-                "_suppressErrors": {
-                  "type": "boolean",
-                  "title": "Supress LMS errors",
-                  "description": "If enabled, error messages will not be displayed when SCORM tracking problems occur",
-                  "default": false
-                },
-                "_commitOnVisibilityChangeHidden": {
-                  "type": "boolean",
-                  "title": "Commit when browser tab is hidden",
-                  "description": "If enabled, a 'commit' call will be made whenever the course window is hidden/minimised. Requires a browser that supports the 'visibilitychange' event",
-                  "default": true
-                },
-                "_manifestIdentifier": {
-                  "type": "string",
-                  "title": "Manifest identifier",
-                  "description": "Sets the 'identifier' attribute in the imsmanifest.xml",
-                  "default": "adapt_manifest"
-                },
-                "_exitStateIfIncomplete": {
-                  "type": "string",
-                  "title": "Incomplete course exit status",
-                  "default": "auto",
-                  "enum": ["auto", "suspend", "normal", ""],
-                  "_backboneForms": "Select"
-                },
-                "_exitStateIfComplete": {
-                  "type": "string",
-                  "title": "Complete course exit status",
-                  "default": "auto",
-                  "enum": ["auto", "suspend", "normal", ""],
-                  "_backboneForms": "Select"
-                },
-                "_setCompletedWhenFailed": {
-                  "type": "boolean",
-                  "title": "Completed when failed",
-                  "description": "If enabled, `cmi.completion_status` will be set to \"completed\" if the assessment is \"failed\". Only valid for SCORM 2004, where the logic for completion and success is separate.",
-                  "default": true
-                },
-                "_maxCharLimitOverride": {
-                  "type": "number",
-                  "title": "Override value for maximum character limit on fill-in type answers",
-                  "description": "If your LMS allows it, you may set a value to override the default character limit for fill-in answers (250 for SCORM2004, 255 for SCORM1.2).",
-                  "default": 0
-                },
-                "_connectionTest": {
-                  "type": "object",
-                  "title": "Connection Test",
-                  "default": {},
-                  "properties": {
-                    "_isEnabled": {
-                      "type": "boolean",
-                      "title": "Enable connection test",
-                      "description": "Determines whether the connection should be tested.",
-                      "default": true
-                    },
-                    "_testOnSetValue": {
-                      "type": "boolean",
-                      "title": "Test on set value",
-                      "description": "Determines whether the connection should be tested for each call to set data on the LMS.",
-                      "default": true
-                    },
-                    "_silentRetryLimit": {
-                      "type": "number",
-                      "title": "Silent Retry Limit",
-                      "description": "The limit for silent retry attempts to establish a connection before raising an error.",
-                      "default": 2
-                    },
-                    "_silentRetryDelay": {
-                      "type": "number",
-                      "title": "Silent Retry Delay",
-                      "description": "The interval in milliseconds between silent connection retries.",
-                      "default": 1000
+    "$anchor": "spoor-config",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "$patch": {
+        "source": {
+            "$ref": "config"
+        },
+        "with": {
+            "properties": {
+                "_spoor": {
+                    "type": "object",
+                    "title": "Spoor (SCORM)",
+                    "default": {},
+                    "properties": {
+                        "_isEnabled": {
+                            "type": "boolean",
+                            "title": "Activați suportul SCORM",
+                            "description": "Dacă este activat, pluginul va încerca să găsească și să urmărească un LMS conform cu SCORM. Debifați pentru a dezactiva urmărirea SCORM",
+                            "default": true
+                        },
+                        "_tracking": {
+                            "type": "object",
+                            "title": "Tracking",
+                            "default": {},
+                            "properties": {
+                                "_shouldStoreResponses": {
+                                    "type": "boolean",
+                                    "title": "Stare întrebare galerie",
+                                    "description": "Dacă este activată, răspunsurile utilizatorului la întrebări vor fi salvate și restaurate în fiecare sesiune. Notă: această setare trebuie activată în majoritatea cazurilor",
+                                    "default": true
+                                },
+                                "_shouldStoreAttempts": {
+                                    "type": "boolean",
+                                    "title": "Stări încercare de întrebare galerie",
+                                    "description": "Dacă este activată, un istoric al răspunsurilor utilizatorului la întrebări va fi salvat și restaurat în fiecare sesiune. Notă: această setare trebuie dezactivată în majoritatea cazurilor",
+                                    "default": false
+                                },
+                                "_shouldRecordInteractions": {
+                                    "type": "boolean",
+                                    "title": "Înregistrați interacțiunile",
+                                    "description": "Dacă este activat, cursul va înregistra răspunsurile utilizatorului la întrebările din câmpurile de date SCORM cmi.interactions",
+                                    "default": true
+                                },
+                                "_shouldRecordObjectives": {
+                                    "type": "boolean",
+                                    "title": "Înregistrați obiectivele",
+                                    "description": "Dacă este activat, cursul va putea înregistra starea și scorurile obiectivelor cursului în câmpurile de date cmi.obiectives SCORM",
+                                    "default": true
+                                }
+                            }
+                        },
+                        "_reporting": {
+                            "type": "object",
+                            "title": "Raportare",
+                            "default": {},
+                            "properties": {
+                                "_onTrackingCriteriaMet": {
+                                    "type": "string",
+                                    "title": "Urmărirea stării de succes",
+                                    "description": "Ce stare trebuie raportată către LMS atunci când sunt îndeplinite criteriile de urmărire",
+                                    "default": "completed",
+                                    "enum": [
+                                        "completed",
+                                        "passed",
+                                        "failed",
+                                        "incomplete"
+                                    ],
+                                    "_backboneForms": "Select"
+                                },
+                                "_onAssessmentFailure": {
+                                    "type": "string",
+                                    "title": "Stare evaluare nereușită",
+                                    "description": "Ce stare trebuie raportată către LMS atunci când evaluarea este nereușită",
+                                    "default": "incomplete",
+                                    "enum": [
+                                        "completed",
+                                        "failed",
+                                        "incomplete"
+                                    ],
+                                    "_backboneForms": "Select"
+                                },
+                                "_resetStatusOnLanguageChange": {
+                                    "type": "boolean",
+                                    "title": "Resetați starea la schimbarea limbii",
+                                    "description": "Dacă este activată, starea cursului va fi resetată la „incompletă” atunci când utilizatorul schimbă limba cursului",
+                                    "default": false
+                                }
+                            }
+                        },
+                        "_advancedSettings": {
+                            "type": "object",
+                            "title": "Configurări Avansate",
+                            "default": {},
+                            "required": [
+                                "_manifestIdentifier"
+                            ],
+                            "properties": {
+                                "_scormVersion": {
+                                    "type": "string",
+                                    "title": "Versiune SCORM",
+                                    "description": "Standardul SCORM de utilizat - SCORM 1.2 sau SCORM 2004 ediția a 4-a",
+                                    "default": "1.2",
+                                    "enum": [
+                                        "1.2",
+                                        "2004"
+                                    ],
+                                    "_backboneForms": "Select"
+                                },
+                                "_showDebugWindow": {
+                                    "type": "boolean",
+                                    "title": "Activați fereastra de depanare SCORM",
+                                    "description": "Dacă este activată, o fereastră pop-up va fi afișată la lansarea cursului, care oferă informații detaliate despre apelurile SCORM efectuate. Acest lucru poate fi foarte util pentru depanarea problemelor SCORM. Rețineți că această fereastră pop-up va apărea automat dacă codul SCORM întâmpină o eroare, chiar dacă aceasta este setată la false",
+                                    "default": false
+                                },
+                                "_commitOnStatusChange": {
+                                    "type": "boolean",
+                                    "title": "Angajează date cu privire la schimbarea stării",
+                                    "description": "Dacă este activată, se va efectua un apel de „comitere” de fiecare dată când se modifică lesson_status",
+                                    "default": true
+                                },
+                                "_commitOnAnyChange": {
+                                    "type": "boolean",
+                                    "title": "Angajează date cu privire la orice modificare",
+                                    "description": "Dacă este activată, se va efectua un apel „COMMIT” (salvare toate datele) de fiecare dată când se modifică o valoare. Rețineți că activarea acestei setări poate avea un impact negativ asupra serverului și trebuie utilizată numai dacă este absolut necesar și numai după o testare atentă a încărcării. Luați în considerare încercarea unei valori mai mici pentru „Frecvența angajamentelor automate” înainte de a modifica această setare",
+                                    "default": false
+                                },
+                                "_timedCommitFrequency": {
+                                    "type": "number",
+                                    "title": "Frecvența angajamentelor automate",
+                                    "description": "Frecvența (în minute) la care un apel de „comitere” trebuie efectuat automat. Setați la 0 pentru a dezactiva complet angajamentele automate",
+                                    "default": 10
+                                },
+                                "_maxCommitRetries": {
+                                    "type": "number",
+                                    "title": "Numărul maxim de reîncercări de comitere",
+                                    "description": "Dacă un apel „COMMIT” eșuează, această setare controlează de câte ori ar trebui să fie reîncercat înainte de a renunța și de a arunca o eroare",
+                                    "default": 5
+                                },
+                                "_commitRetryDelay": {
+                                    "type": "number",
+                                    "title": "Întârziere reîncercare comitere",
+                                    "description": "Cât de mult de o întârziere (în milisecunde) pentru a lăsa între comite reîncercări",
+                                    "default": 2000
+                                },
+                                "_suppressErrors": {
+                                    "type": "boolean",
+                                    "title": "Suprimați erorile LMS",
+                                    "description": "Dacă este activată, mesajele de eroare nu vor fi afișate atunci când apar probleme de urmărire SCORM",
+                                    "default": false
+                                },
+                                "_commitOnVisibilityChangeHidden": {
+                                    "type": "boolean",
+                                    "title": "Angajează-te atunci când fila browserului este ascunsă",
+                                    "description": "Dacă este activată, se va efectua un apel de „comitere” ori de câte ori fereastra cursului este ascunsă/minimizată. Necesită un browser care acceptă evenimentul de „schimbare a vizibilității”",
+                                    "default": true
+                                },
+                                "_manifestIdentifier": {
+                                    "type": "string",
+                                    "title": "Identificator manifest",
+                                    "description": "Setează atributul „identificator” în imsmanifest.xml",
+                                    "default": "adapt_manifest"
+                                },
+                                "_exitStateIfIncomplete": {
+                                    "type": "string",
+                                    "title": "Stare incompletă de ieșire din curs",
+                                    "default": "auto",
+                                    "enum": [
+                                        "auto",
+                                        "suspend",
+                                        "normal",
+                                        ""
+                                    ],
+                                    "_backboneForms": "Select"
+                                },
+                                "_exitStateIfComplete": {
+                                    "type": "string",
+                                    "title": "Finalizați starea de ieșire a cursului",
+                                    "default": "auto",
+                                    "enum": [
+                                        "auto",
+                                        "suspend",
+                                        "normal",
+                                        ""
+                                    ],
+                                    "_backboneForms": "Select"
+                                },
+                                "_setCompletedWhenFailed": {
+                                    "type": "boolean",
+                                    "title": "Finalizat când a eșuat",
+                                    "description": "Dacă este activată, „cmi.completion_status” va fi setat la „completed” dacă evaluarea este „failed”. Valabil doar pentru SCORM 2004, unde logica pentru finalizare și succes este separată.",
+                                    "default": true
+                                },
+                                "_maxCharLimitOverride": {
+                                    "type": "number",
+                                    "title": "Suprascrieți valoarea pentru limita maximă de caractere pentru răspunsurile de tip completare",
+                                    "description": "Dacă LMS permite acest lucru, puteți seta o valoare care să suprascrie limita implicită de caractere pentru răspunsurile de completare (250 pentru SCORM2004, 255 pentru SCORM1.2).",
+                                    "default": 0
+                                },
+                                "_connectionTest": {
+                                    "type": "object",
+                                    "title": "Test de conectare",
+                                    "default": {},
+                                    "properties": {
+                                        "_isEnabled": {
+                                            "type": "boolean",
+                                            "title": "Activare conexiune",
+                                            "description": "Stabilește dacă conexiunea trebuie testată.",
+                                            "default": true
+                                        },
+                                        "_testOnSetValue": {
+                                            "type": "boolean",
+                                            "title": "Testarea valorii setate",
+                                            "description": "Determină dacă conexiunea trebuie testată pentru fiecare apel pentru a seta date pe LMS.",
+                                            "default": true
+                                        },
+                                        "_silentRetryLimit": {
+                                            "type": "number",
+                                            "title": "Limită de reîncercare silențioasă",
+                                            "description": "Limita pentru reîncercarea silențioasă încearcă să stabilească o conexiune înainte de a ridica o eroare.",
+                                            "default": 2
+                                        },
+                                        "_silentRetryDelay": {
+                                            "type": "number",
+                                            "title": "Întârziere de reîncercare silențioasă",
+                                            "description": "Intervalul în milisecunde dintre conexiunile silențioase se reia.",
+                                            "default": 1000
+                                        }
+                                    }
+                                },
+                                "_uniqueInteractionIds": {
+                                    "type": "boolean",
+                                    "title": "ID-uri unice de interacțiune",
+                                    "description": "Dacă este activată, „cmi.interactions.n.id” va fi prefinanțat cu un index, făcând ID-ul unic. Unele LMS-uri necesită ID-uri unice, ceea ce va inhiba gruparea interacțiunilor după ID pe partea de server.",
+                                    "default": false
+                                }
+                            }
+                        },
+                        "_showCookieLmsResetButton": {
+                            "type": "boolean",
+                            "title": "Afișați butonul de resetare (numai scorm_test_harness.html)",
+                            "description": "Dacă este activată, va fi disponibil un buton de resetare pentru a relansa cursul și, opțional, pentru a șterge datele de urmărire (numai scorm_test_harness.html).",
+                            "default": false
+                        },
+                        "_shouldPersistCookieLMSData": {
+                            "type": "boolean",
+                            "title": "Persistă datele cookie (numai scorm_test_harness.html)",
+                            "description": "Dacă este activată, datele cursului vor persista peste sesiunile de browser (numai la scorm_test_harness.html).",
+                            "default": true
+                        }
                     }
-                  }
-                },
-                "_uniqueInteractionIds": {
-                  "type": "boolean",
-                  "title": "Unique Interaction Ids",
-                  "description": "If enabled, `cmi.interactions.n.id` will be prepended with an index, making the id unique. Some LMSes require unique ids, this will inhibit the grouping of interactions by id on the server-side.",
-                  "default": false
                 }
-              }
-            },
-            "_showCookieLmsResetButton": {
-              "type": "boolean",
-              "title": "Show reset button (scorm_test_harness.html only)",
-              "description": "If enabled, a reset button will be available to relaunch the course and optionally clear tracking data (scorm_test_harness.html only).",
-              "default": false
-            },
-            "_shouldPersistCookieLMSData": {
-              "type": "boolean",
-              "title": "Persist cookie data (scorm_test_harness.html only)",
-              "description": "If enabled, the course data will persist over browser sessions (scorm_test_harness.html only).",
-              "default": true
             }
-          }
         }
-      }
     }
-  }
 }
