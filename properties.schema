@@ -314,55 +314,49 @@
                                             "type": "number",
                                             "required": false,
                                             "default": "0",
-                                            "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 04 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                            "title": "Valoare de suprascriere pentru limita maximă de caractere la răspunsurile de tip completare",
                                             "inputType": "Number",
-                                            "validators": [
-                                                "number"
-                                            ],
-                                            "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+                                            "validators": ["number"],
+                                            "help": "Dacă LMS-ul tău permite, poți seta o valoare pentru a suprascrie limita implicită de caractere pentru răspunsurile de completare (250 pentru SCORM2004, 255 pentru SCORM1.2)."
                                         },
                                         "_connectionTest": {
                                             "type": "object",
                                             "required": true,
-                                            "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                            "title": "Test de conexiune",
                                             "properties": {
                                                 "_isEnabled": {
                                                     "type": "boolean",
                                                     "default": true,
-                                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 03 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                                    "title": "Este activat",
                                                     "inputType": "Checkbox",
                                                     "validators": [],
-                                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 02 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+                                                    "help": "Determină dacă conexiunea ar trebui testată."
                                                 },
                                                 "_testOnSetValue": {
                                                     "type": "boolean",
                                                     "default": true,
-                                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 02 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                                    "title": "Testează la setarea valorii",
                                                     "inputType": "Checkbox",
                                                     "validators": [],
-                                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+                                                    "help": "Determină dacă conexiunea ar trebui testată pentru fiecare apel de setare a datelor în LMS."
                                                 },
                                                 "_silentRetryLimit": {
                                                     "type": "number",
                                                     "required": false,
                                                     "default": "2",
-                                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 01 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                                    "title": "Limită de încercări silențioase",
                                                     "inputType": "Number",
-                                                    "validators": [
-                                                        "number"
-                                                    ],
-                                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  01 HOURS 00 MINUTES 00 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+                                                    "validators": ["number"],
+                                                    "help": "Limita încercărilor silențioase de a stabili o conexiune înainte de a afișa o eroare."
                                                 },
                                                 "_silentRetryDelay": {
                                                     "type": "number",
                                                     "required": false,
                                                     "default": "1000",
-                                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                                    "title": "Întârziere la încercări silențioase",
                                                     "inputType": "Number",
-                                                    "validators": [
-                                                        "number"
-                                                    ],
-                                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 59 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
+                                                    "validators": ["number"],
+                                                    "help": "Intervalul în milisecunde între încercările silențioase de reconectare."
                                                 }
                                             }
                                         },
@@ -370,54 +364,48 @@
                                             "type": "boolean",
                                             "required": false,
                                             "default": false,
-                                            "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 58 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
+                                            "title": "ID-uri unice pentru interacțiuni",
                                             "inputType": "Checkbox",
                                             "validators": [],
-                                            "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 57 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-                                        }
-                                    }
-                                },
-                                "_showCookieLmsResetButton": {
-                                    "type": "boolean",
-                                    "required": false,
-                                    "default": false,
-                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 57 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
-                                    "inputType": "Checkbox",
-                                    "validators": [],
-                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 56 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-                                },
-                                "_shouldPersistCookieLMSData": {
-                                    "type": "boolean",
-                                    "required": false,
-                                    "default": true,
-                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 55 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
-                                    "inputType": "Checkbox",
-                                    "validators": [],
-                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 55 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-                                }
-                            }
-                        }
-                    }
-                },
-                "course": {
-                    "type": "object",
-                    "properties": {
-                        "_spoor": {
-                            "type": "object",
-                            "required": false,
-                            "legend": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 54 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
-                            "properties": {
-                                "_messages": {
-                                    "type": "object",
-                                    "default": {},
-                                    "title": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 53 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE",
-                                    "inputType": {
-                                        "type": "CodeEditor",
-                                        "mode": "json"
-                                    },
-                                    "validators": [],
-                                    "help": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS FOR TODAY. NEXT AVAILABLE IN  00 HOURS 59 MINUTES 53 SECONDS VISIT HTTPS://MYMEMORY.TRANSLATED.NET/DOC/USAGELIMITS.PHP TO TRANSLATE MORE"
-                                }
+                                            "help": "Dacă este activat, `cmi.interactions.n.id` va fi precedat de un index, făcând ID-ul unic. Unele LMS-uri necesită ID-uri unice, ceea ce va împiedica gruparea interacțiunilor pe server."
+                                        },
+                                        "_showCookieLmsResetButton": {
+                                            "type": "boolean",
+                                            "required": false,
+                                            "default": false,
+                                            "title": "Afișează butonul de resetare (doar în scorm_test_harness.html)",
+                                            "inputType": "Checkbox",
+                                            "validators": [],
+                                            "help": "Dacă este activat, va fi disponibil un buton de resetare pentru relansarea cursului și, opțional, ștergerea datelor de urmărire (doar în scorm_test_harness.html)."
+                                        },
+                                        "_shouldPersistCookieLMSData": {
+                                            "type": "boolean",
+                                            "required": false,
+                                            "default": true,
+                                            "title": "Păstrează datele cookie (doar în scorm_test_harness.html)",
+                                            "inputType": "Checkbox",
+                                            "validators": [],
+                                            "help": "Dacă este activat, datele cursului vor fi păstrate între sesiunile browserului (doar în scorm_test_harness.html)."
+                                        },
+                                        "course": {
+                                            "type": "object",
+                                            "properties": {
+                                                "_spoor": {
+                                                    "type": "object",
+                                                    "required": false,
+                                                    "legend": "Spoor (SCORM)",
+                                                    "properties": {
+                                                        "_messages": {
+                                                            "type": "object",
+                                                            "default": {},
+                                                            "title": "Mesaje de eroare",
+                                                            "inputType": {
+                                                                "type": "CodeEditor",
+                                                                "mode": "json"
+                                                            },
+                                                            "validators": [],
+                                                            "help": "Obiect opțional care poate fi folosit pentru a modifica/traducere mesajele de eroare afișate de extensia spoor"
+                                                        }
                             }
                         }
                     }
