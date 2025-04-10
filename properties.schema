@@ -368,44 +368,50 @@
                                             "inputType": "Checkbox",
                                             "validators": [],
                                             "help": "Dacă este activat, `cmi.interactions.n.id` va fi precedat de un index, făcând ID-ul unic. Unele LMS-uri necesită ID-uri unice, ceea ce va împiedica gruparea interacțiunilor pe server."
-                                        },
-                                        "_showCookieLmsResetButton": {
-                                            "type": "boolean",
-                                            "required": false,
-                                            "default": false,
-                                            "title": "Afișează butonul de resetare (doar în scorm_test_harness.html)",
-                                            "inputType": "Checkbox",
-                                            "validators": [],
-                                            "help": "Dacă este activat, va fi disponibil un buton de resetare pentru relansarea cursului și, opțional, ștergerea datelor de urmărire (doar în scorm_test_harness.html)."
-                                        },
-                                        "_shouldPersistCookieLMSData": {
-                                            "type": "boolean",
-                                            "required": false,
-                                            "default": true,
-                                            "title": "Păstrează datele cookie (doar în scorm_test_harness.html)",
-                                            "inputType": "Checkbox",
-                                            "validators": [],
-                                            "help": "Dacă este activat, datele cursului vor fi păstrate între sesiunile browserului (doar în scorm_test_harness.html)."
-                                        },
-                                        "course": {
-                                            "type": "object",
-                                            "properties": {
-                                                "_spoor": {
-                                                    "type": "object",
-                                                    "required": false,
-                                                    "legend": "Spoor (SCORM)",
-                                                    "properties": {
-                                                        "_messages": {
-                                                            "type": "object",
-                                                            "default": {},
-                                                            "title": "Mesaje de eroare",
-                                                            "inputType": {
-                                                                "type": "CodeEditor",
-                                                                "mode": "json"
-                                                            },
-                                                            "validators": [],
-                                                            "help": "Obiect opțional care poate fi folosit pentru a modifica/traducere mesajele de eroare afișate de extensia spoor"
-                                                        }
+                                        }
+                                    }
+                                },
+                                "_showCookieLmsResetButton": {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "default": false,
+                                    "title": "Afișează butonul de resetare (doar în scorm_test_harness.html)",
+                                    "inputType": "Checkbox",
+                                    "validators": [],
+                                    "help": "Dacă este activat, va fi disponibil un buton de resetare pentru relansarea cursului și, opțional, ștergerea datelor de urmărire (doar în scorm_test_harness.html)."
+                                },
+                                "_shouldPersistCookieLMSData": {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "default": true,
+                                    "title": "Păstrează datele cookie (doar în scorm_test_harness.html)",
+                                    "inputType": "Checkbox",
+                                    "validators": [],
+                                    "help": "Dacă este activat, datele cursului vor fi păstrate între sesiunile browserului (doar în scorm_test_harness.html)."
+                                }
+                            }
+                        }
+                    }
+                },
+                "course": {
+                    "type": "object",
+                    "properties": {
+                        "_spoor": {
+                            "type": "object",
+                            "required": false,
+                            "legend": "Spoor (SCORM)",
+                            "properties": {
+                                "_messages": {
+                                    "type": "object",
+                                    "default": {},
+                                    "title": "Mesaje de eroare",
+                                    "inputType": {
+                                        "type": "CodeEditor",
+                                        "mode": "json"
+                                    },
+                                    "validators": [],
+                                    "help": "Obiect opțional care poate fi folosit pentru a modifica/traducere mesajele de eroare afișate de extensia spoor"
+                                }
                             }
                         }
                     }
